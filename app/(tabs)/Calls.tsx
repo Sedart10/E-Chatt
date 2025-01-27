@@ -26,7 +26,7 @@ const exampleCalls = [
   },
   {
     id: '3',
-    name: 'Recep Tayyip ERDOGAN',
+    name: 'Alice',
     time: '2 days ago',
     date: '2 days ago',
     type: 'incoming',
@@ -42,7 +42,7 @@ const exampleCalls = [
     icon: 'phone',
   }, {
     id: '5',
-    name: 'Sedat Peker',
+    name: 'John Doe',
     time: '10 days ago',
     date: '10 days ago',
     type: 'incoming',
@@ -50,7 +50,7 @@ const exampleCalls = [
     icon: 'phone',
   }, {
     id: '6',
-    name: 'Polat Alemdar',
+    name: 'Jane Doe',
     time: '4 days ago',
     date: '4 days ago',
     type: 'incoming',
@@ -128,10 +128,10 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#1a1a1a',
+    width: 50,
+    height: 50,
+    borderRadius: 30,
+    backgroundColor: '#757586',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 12,

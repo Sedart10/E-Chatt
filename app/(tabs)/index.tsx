@@ -34,9 +34,9 @@ export default function HomeScreen() {
   const [editingMessageIndex, setEditingMessageIndex] = useState<number | null>(null);
 
   const exampleUsers: { text: string; sender: 'me' | 'other'; username: string }[] = [
-    { text: 'Projeyi bitir', sender: 'other', username: 'Umit' },
-    { text: 'How are you nigga?', sender: 'other', username: 'Akram' },
-    { text: 'Vergi verdin mi?', sender: 'other', username: 'Recep Tayyip ERDOGAN' },
+    { text: 'Where are you?', sender: 'other', username: 'John' },
+    { text: 'Hello ', sender: 'other', username: 'Marry' },
+    { text: 'How are you ?', sender: 'other', username: 'Alex' },
   ];
 
   // Mesaj gönderme işlevi
@@ -92,7 +92,7 @@ export default function HomeScreen() {
     <ThemedView style={styles.container}>
       <ThemedView style={styles.titleContainer}>
       </ThemedView>
-      <ThemedText style={styles.titleText} type="title">CHAT</ThemedText>
+      <ThemedText style={styles.titleText} type="title">E-CHAT</ThemedText>
       <ThemedView style={styles.titleLine} />
 
       <ThemedView style={styles.chatContainer}>
@@ -145,6 +145,9 @@ export default function HomeScreen() {
         <TouchableOpacity onPress={handleSelectMedia}>
           <Ionicons name="images" size={24} color="white" />
         </TouchableOpacity>
+        <TouchableOpacity onPress={handleSend}>
+          <Ionicons name="send" size={24} color="white" />
+        </TouchableOpacity>
       </ThemedView>
     </ThemedView>
   );
@@ -169,7 +172,7 @@ const styles = StyleSheet.create({
 
   },
   titleWithMargin: {
-    marginTop: 24, // Başlığı aşağı kaydırmak için marginTop ekledik
+    marginTop: 24,
   },
   titleLine: {
     height: 1,

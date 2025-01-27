@@ -8,6 +8,9 @@ import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import Entypo from '@expo/vector-icons/Entypo';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -27,6 +30,7 @@ export default function TabLayout() {
           default: {},
         }),
       }}>
+
       <Tabs.Screen
         name="Contacts"
         options={{
@@ -34,10 +38,11 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <Feather name="users" size={24} color="white" />,
         }}
       />
+
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Chat',
+          title: 'Chat-AI',
           tabBarIcon: ({ color }) => <Entypo name="chat" size={24} color="white" />,
         }}
       />
@@ -50,6 +55,20 @@ export default function TabLayout() {
         }}
       />
 
+      <Tabs.Screen
+        name="Status"
+        options={{
+          title: 'Status',
+          tabBarIcon: ({ color }) => <MaterialIcons name="motion-photos-on" size={24} color="white" />
+        }}
+      />
+      <Tabs.Screen
+        name="Profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color }) => <FontAwesome name="user-o" size={24} color="white" />,
+        }}
+      />
     </Tabs>
   );
 }

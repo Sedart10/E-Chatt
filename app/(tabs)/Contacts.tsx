@@ -5,21 +5,21 @@ import { useNavigation } from '@react-navigation/native';
 import { Collapsible } from '@/components/Collapsible';
 
 const exampleContacts = [
-    { id: '1', name: 'Aziz YILDIRIM', lastMessage: 'beni konuşturmayın', profilePhoto: 'https://ia801308.us.archive.org/8/items/whatsapp-smiling-guy-i-accidentally-made/whatsapp%20generic%20person%20dark.jpg' },
-    { id: '2', name: 'Ali KOC', lastMessage: 'Bu sene net sampiyonuz', profilePhoto: 'https://ia801308.us.archive.org/8/items/whatsapp-smiling-guy-i-accidentally-made/whatsapp%20generic%20person%20dark.jpg' },
-    { id: '3', name: 'Recep Tayyip ERDOGAN', lastMessage: 'Ya Allah!!', profilePhoto: 'https://ia801308.us.archive.org/8/items/whatsapp-smiling-guy-i-accidentally-made/whatsapp%20generic%20person%20dark.jpg' },
-    { id: '4', name: 'Umit Demritas', lastMessage: 'Projeyi bitir.', profilePhoto: 'https://ia801308.us.archive.org/8/items/whatsapp-smiling-guy-i-accidentally-made/whatsapp%20generic%20person%20dark.jpg' },
+    { id: '1', name: 'Sam ', lastMessage: 'Okey!', profilePhoto: 'https://ia801308.us.archive.org/8/items/whatsapp-smiling-guy-i-accidentally-made/whatsapp%20generic%20person%20dark.jpg' },
+    { id: '2', name: 'Alex ', lastMessage: 'I take it.', profilePhoto: 'https://ia801308.us.archive.org/8/items/whatsapp-smiling-guy-i-accidentally-made/whatsapp%20generic%20person%20dark.jpg' },
+    { id: '3', name: 'Peter', lastMessage: 'See you soon', profilePhoto: 'https://ia801308.us.archive.org/8/items/whatsapp-smiling-guy-i-accidentally-made/whatsapp%20generic%20person%20dark.jpg' },
+    { id: '4', name: 'John', lastMessage: 'Finish the project.', profilePhoto: 'https://ia801308.us.archive.org/8/items/whatsapp-smiling-guy-i-accidentally-made/whatsapp%20generic%20person%20dark.jpg' },
     { id: '5', name: 'Tadic', lastMessage: 'Mission accomplished!', profilePhoto: 'https://ia801308.us.archive.org/8/items/whatsapp-smiling-guy-i-accidentally-made/whatsapp%20generic%20person%20dark.jpg' },
 ];
 
-interface Contact {
+export interface Contact {
     id: string;
     name: string;
     lastMessage: string;
     profilePhoto: string;
 }
 
-const ContactItem = ({ contact, onPress }: { contact: Contact; onPress: () => void }) => (
+const ContactItem = ({ contact, onPress }: { contact: { id: string; name: string; lastMessage: string; profilePhoto: string }; onPress: () => void }) => (
     <TouchableOpacity onPress={onPress}>
         <ThemedView style={styles.contactItem}>
             <Image source={{ uri: contact.profilePhoto }} style={styles.profilePhoto} />
@@ -34,22 +34,20 @@ const ContactItem = ({ contact, onPress }: { contact: Contact; onPress: () => vo
 export default function ContactsScreen() {
     const navigation = useNavigation();
 
-    const handleContactPress = (contact: Contact) => {
-        const sampleConversation = [
-            { text: "Hello!", sender: "me", username: "You" },
-            { text: "Hi, how are you?", sender: "other", username: contact.name },
-            { text: "I'm good, thanks! How about you?", sender: "me", username: "You" },
-            { text: "I'm doing well, thank you!", sender: "other", username: contact.name },
-        ];
-
-
+    const handleContactPress = (contact: { id: string }) => {
+        openChat(contact.id);
     };
+
+    function openChat(id: string) {
+        console.log(`Opening chat for Contacts ID: ${id}`);
+    }
 
     return (
         <ThemedView style={styles.container}>
             <ThemedView style={styles.titleContainer}>
             </ThemedView>
-            <ThemedText style={styles.titleText} type="title">CONTACTS</ThemedText>
+            {/* Title */}
+            <ThemedText style={styles.titleText} type="title">E-CHAT</ThemedText>
             <FlatList
                 data={exampleContacts}
                 renderItem={({ item }) => (
@@ -57,9 +55,11 @@ export default function ContactsScreen() {
                 )}
                 keyExtractor={item => item.id}
             />
-
-            <Collapsible title="New Chat">
-                <ThemedText>+ New Person</ThemedText>
+            {/* New Chat  */}
+            <Collapsible title="Add New Contact" >
+                <ThemedView style={styles.collapsibleTitle}>
+                    <ThemedText style={styles.subTitleText}>Add New Contact</ThemedText>
+                </ThemedView>
             </Collapsible>
         </ThemedView>
     );
@@ -123,3 +123,4 @@ const styles = StyleSheet.create({
         color: '#4fff33',
     },
 });
+
